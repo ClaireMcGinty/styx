@@ -156,7 +156,9 @@ public class FlyteAdminClientRunner implements FlyteRunner {
         .orElseGet(Map::of);
 
     // labels values should be normalized calling LabelValue::normalize, but styx execution ids are normalized already
-    var labels = Map.of(STYX_EXECUTION_ID, styxVariables.get(STYX_EXECUTION_ID));
+    var labels = Map.of(
+        STYX_EXECUTION_ID, styxVariables.get(STYX_EXECUTION_ID),
+        STYX_WORKFLOW_ID, styxVariables.get(STYX_WORKFLOW_ID));
     final var annotations = ImmutableMap.<String, String>builder()
         .putAll(styxVariables)
         // just to keep compatibility with removing dangling executions

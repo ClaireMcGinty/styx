@@ -431,7 +431,9 @@ public class FlyteAdminClientRunnerTest {
 
     flyteRunner.createExecution(RUN_STATE, execName, FLYTE_EXEC_CONF);
 
-    final var expectedLabels = Map.of("STYX_EXECUTION_ID", "exec-id");
+    final var expectedLabels = Map.of(
+        "STYX_EXECUTION_ID", "exec-id",
+        "STYX_WORKFLOW_ID", "styx.TestEndpoint");
     final var expectedAnnotations = ImmutableMap.<String, String>builder()
         .put("STYX_COMPONENT_ID", "id")
         .put("STYX_EXECUTION_ID", "exec-id")
